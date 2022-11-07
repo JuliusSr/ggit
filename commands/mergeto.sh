@@ -11,10 +11,15 @@ Options:
 
 working_branch=$(git rev-parse --abbrev-ref HEAD)
 
+push=0
 stash=0
 branches=()
 while [[ $# -gt 0 ]]; do
 	case $1 in
+		-p|--push)
+			push=1
+			shift
+			;;
 		-s|--stash)
 			stash=1
 			shift
@@ -47,6 +52,9 @@ for branch in ${branches[@]} ; do
 	if [ $working_branch != $branch ] ; then
 		git checkout $branch
 		git merge $working_branch
+		if (( "$push" == 1 )) ; then
+			git push
+		fi
 		echo
 	fi
 done
