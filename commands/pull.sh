@@ -17,6 +17,7 @@ working_branch=$(git rev-parse --abbrev-ref HEAD)
 
 refs="refs/heads/"
 all=0
+stash=0
 branches=()
 while [[ $# -gt 0 ]]; do
 	case $1 in
