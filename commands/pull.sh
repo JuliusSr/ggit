@@ -57,8 +57,10 @@ if (( "$stash" == 1 )) ; then
 	git stash
 fi
 
+git fetch
+
 if (( ${#branches[@]} == 0 )) ; then
-	git pull
+	git merge "origin/$working_branch"
 else 
 	echo "branches: "
 	echo "${branches[@]}"
@@ -66,7 +68,7 @@ else
 
 	for branch in ${branches[@]} ; do
 		git checkout $branch
-		git pull
+		git merge "origin/$branch"
 		echo 
 	done
 
