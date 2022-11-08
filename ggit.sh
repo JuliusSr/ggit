@@ -6,8 +6,8 @@ ggit_commands_dir="$ggit_dir/commands"
 help_message="Usage: ggit <command> [<args>] 
 
 Commands:
-	commit         Commit changes
-	mergeto, mt    Merge current branch into one or more branches
+  commit         Commit changes
+  mergeto, mt    Merge current branch into one or more branches
   pull           Multibranch pull
 
 Options:
