@@ -2,7 +2,7 @@
 
 ggit_commands_dir="$(dirname "$0")"
 
-help_message="Usage: ggit commit [<options>] [<branch>...]
+help_message="Usage: ggit commit [<options>]
 
 Commit changes into current branch
 

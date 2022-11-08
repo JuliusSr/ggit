@@ -1,6 +1,6 @@
 #!/bin/bash
 
-help_message="Usage: ggit mergeto <branch> [<branch>...]
+help_message="Usage: ggit mergeto <branch> [<branch>...] [<options>]
 
 Merge current branch into one or more branches
 
