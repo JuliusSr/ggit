@@ -48,16 +48,15 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
+git fetch
+
 if (( "$all" == 1 )) ; then
 	branches=$(git for-each-ref --format='%(refname)' "$refs" | sed "s/${refs////\\/}//")
 fi
 
-
 if (( "$stash" == 1 )) ; then
 	git stash
 fi
-
-git fetch
 
 if (( ${#branches[@]} == 0 )) ; then
 	git merge "origin/$working_branch"
