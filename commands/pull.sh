@@ -72,7 +72,7 @@ else
 	done
 
 	if [ $working_branch != $(git rev-parse --abbrev-ref HEAD) ] ; then
-		git checkout $working_branch
+		git checkout $working_branch > /dev/null 2>&1
 	fi
 fi
 

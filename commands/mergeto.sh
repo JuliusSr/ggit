@@ -59,7 +59,9 @@ for branch in ${branches[@]} ; do
 	fi
 done
 
-git checkout $working_branch
+if [ $working_branch != $(git rev-parse --abbrev-ref HEAD) ] ; then
+	git checkout $working_branch > /dev/null 2>&1
+fi
 
 if (( "$stash" == 1 )) ; then
 	git stash pop
