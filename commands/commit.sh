@@ -21,6 +21,7 @@ add=0
 merge=0
 merge_branches=()
 push=0
+wtc=0
 while [[ $# -gt 0 ]]; do
 	case $1 in
 		-a|--add)
@@ -47,6 +48,10 @@ while [[ $# -gt 0 ]]; do
 			push=1
 			shift
 			;;
+		-wtc|--whatthecommit)
+			wtc=1
+			shift
+			;;
 		-h|--help)
 			echo "$help_message"
 			exit 0
@@ -62,8 +67,22 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
+wtc() {
+	response=$(curl -s 'https://whatthecommit.com/')
+	if [[ "$OSTYPE" == "darwin"* ]]; then
+		message=$(echo "$response" | ggrep -oP '<p>\K.*')
+	else
+		message=$(echo "$response" | grep -oP '<p>\K.*')
+	fi
+	echo "$message"
+}
+
 if (( "$add" == 1 )) ; then
 	git add .
+fi
+
+if (( "$wtc" == 1 )); then
+	message=$(wtc)
 fi
 
 if [ "$message" != "" ] ; then
