@@ -68,13 +68,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 wtc() {
-	response=$(curl -s 'https://whatthecommit.com/')
-	if [[ "$OSTYPE" == "darwin"* ]]; then
-		message=$(echo "$response" | ggrep -oP '<p>\K.*')
-	else
-		message=$(echo "$response" | grep -oP '<p>\K.*')
-	fi
-	echo "$message"
+	echo $(curl -s 'https://whatthecommit.com/index.txt')
 }
 
 if (( "$add" == 1 )) ; then
