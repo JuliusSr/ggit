@@ -5,6 +5,7 @@ help_message="Usage: ggit mergeto <branch> [<branch>...] [<options>]
 Merge current branch into one or more branches
 
 Options:
+  -p, --push     Push to branches
   -s, --stash    Create stash entry before pull and apply it after the operation ends
   -h, --help     Print usage help message
 "
